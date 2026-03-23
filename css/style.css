@@ -1,0 +1,435 @@
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    /* ── COLORES GLOBALES ── */
+    :root {
+      --color-azul-oscuro:  #0d1b2a;
+      --color-azul-medio:   #1b4f8a;
+      --color-azul-claro:   #4a90d9;
+      --color-azul-palido:  #dceefb;
+      --color-acento:       #2166c0;
+      --color-fondo:        #f5f8fd;
+      --color-texto:        #0d1b2a;
+      --color-texto-suave:  #4a6080;
+      --color-borde:        rgba(27,79,138,0.2);
+    }
+ 
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--color-fondo);
+      color: var(--color-texto);
+    }
+ 
+    /* BARRA DE NAVEGACIÓN */
+    .barra-navegacion {
+      background: var(--color-azul-oscuro);
+      display: flex;
+      align-items: center;
+      padding: 0 36px;
+      height: 58px;
+      border-bottom: 2px solid var(--color-azul-claro);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+ 
+    /* Logo / nombre del sitio */
+    .barra-logo {
+      color: var(--color-azul-claro);
+      font-size: .95rem;
+      font-weight: 700;
+      text-decoration: none;
+      margin-right: 24px;
+      padding-right: 24px;
+      border-right: 1px solid #1e3a5f;
+      letter-spacing: .04em;
+    }
+ 
+    /* Lista de enlaces del menú */
+    .barra-enlaces {
+      list-style: none;
+      display: flex;
+      gap: 2px;
+    }
+ 
+    .barra-enlaces a {
+      color: #90aac8;
+      text-decoration: none;
+      padding: 8px 16px;
+      font-size: .86rem;
+      border-radius: 3px;
+      transition: background .2s, color .2s;
+    }
+ 
+    .barra-enlaces a:hover  { background: rgba(74,144,217,.18); color: #fff; }
+    .barra-enlaces a.activo { background: rgba(74,144,217,.25); color: #fff; }
+ 
+ 
+    /*PORTADA (sección principal con imagen de fondo)*/
+    .portada {
+      position: relative;
+      height: 440px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+ 
+    /* Imagen de fondo de la portada */
+    .portada-fondo {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(8,18,36,.9) 0%, rgba(8,18,36,.6) 55%, rgba(8,18,36,.15) 100%),
+        url('https://images.unsplash.com/photo-1509228468518-180dd4864904?w=1400&q=80') center/cover no-repeat;
+    }
+ 
+    /* Texto encima de la imagen */
+    .portada-contenido {
+      position: relative;
+      z-index: 2;
+      padding: 0 64px;
+      max-width: 640px;
+    }
+ 
+    /* Texto pequeño arriba del título */
+    .portada-etiqueta-superior {
+      font-size: .72rem;
+      letter-spacing: .22em;
+      color: var(--color-azul-claro);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 12px;
+    }
+ 
+    .portada-contenido h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+ 
+    .portada-contenido h1 em { font-style: italic; color: #93c5fd; }
+ 
+    .portada-contenido p {
+      color: rgba(255,255,255,.82);
+      font-size: .98rem;
+      line-height: 1.72;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+ 
+    /* Botón de la portada */
+    .boton-portada {
+      display: inline-block;
+      padding: 12px 32px;
+      background: var(--color-azul-medio);
+      color: #fff;
+      font-size: .86rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      letter-spacing: .04em;
+      transition: background .2s, transform .2s;
+    }
+ 
+    .boton-portada:hover { background: var(--color-acento); transform: translateY(-2px); }
+ 
+ 
+    /*SECCIÓN DE INTRODUCCIÓN (franja de bienvenida)*/
+    .seccion-introduccion {
+      background: var(--color-azul-palido);
+      padding: 52px 64px;
+      border-bottom: 1px solid rgba(27,79,138,.15);
+    }
+ 
+    .seccion-introduccion h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--color-azul-oscuro);
+      margin-bottom: 14px;
+    }
+ 
+    .seccion-introduccion p {
+      font-size: .98rem;
+      color: #2a4a70;
+      line-height: 1.75;
+      max-width: 700px;
+      margin-bottom: 24px;
+      font-weight: 300;
+    }
+ 
+    /* Botón de la introducción */
+    .boton-introduccion {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--color-azul-medio);
+      color: #fff;
+      font-size: .86rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background .2s, transform .2s;
+    }
+ 
+    .boton-introduccion:hover { background: var(--color-azul-oscuro); transform: translateY(-2px); }
+ 
+ 
+    /* SECCIÓN GALERÍA DE TEMAS (imágenes con texto)*/
+    .seccion-galeria {
+      background: var(--color-azul-oscuro);
+      padding: 56px 44px;
+    }
+ 
+    /* Título pequeño de la galería */
+    .galeria-titulo {
+      font-size: .7rem;
+      letter-spacing: .22em;
+      color: var(--color-azul-claro);
+      text-align: center;
+      margin-bottom: 36px;
+      text-transform: uppercase;
+    }
+ 
+    /* Cuadrícula de 3 columnas */
+    .galeria-cuadricula {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+ 
+    /* Cada tarjeta de la galería */
+    .galeria-tarjeta {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(74,144,217,.2);
+      transition: transform .3s, box-shadow .3s;
+    }
+ 
+    .galeria-tarjeta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 32px rgba(0,0,0,.5);
+      border-color: var(--color-azul-claro);
+    }
+ 
+    /* Imagen de cada tarjeta */
+    .galeria-tarjeta img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      transition: filter .3s;
+    }
+ 
+    .galeria-tarjeta:hover img { filter: brightness(1.1); }
+ 
+    /* Contenido de texto dentro de la tarjeta */
+    .galeria-tarjeta-contenido {
+      background: rgba(8,18,36,.92);
+      padding: 18px 20px 20px;
+      border-top: 2px solid var(--color-azul-claro);
+    }
+ 
+    /* Etiqueta del número de tema */
+    .galeria-tarjeta-etiqueta {
+      font-size: .65rem;
+      letter-spacing: .16em;
+      color: var(--color-azul-claro);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 5px;
+    }
+ 
+    /* Título del tema */
+    .galeria-tarjeta-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 7px;
+    }
+ 
+    /* Descripción del tema */
+    .galeria-tarjeta-descripcion {
+      font-size: .85rem;
+      color: #7aa0c4;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+ 
+ 
+    /*SECCIÓN DE RAMAS (tarjetas con imagen circular)*/
+    .seccion-ramas {
+      background: #fff;
+      padding: 60px 40px;
+    }
+ 
+    /* Encabezado centrado de la sección */
+    .encabezado-seccion {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+ 
+    /* Texto pequeño encima del título */
+    .encabezado-seccion .texto-categoria {
+      font-size: .7rem;
+      letter-spacing: .22em;
+      color: var(--color-acento);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+ 
+    .encabezado-seccion h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900;
+      color: var(--color-azul-oscuro);
+    }
+ 
+    /* Fila de 3 tarjetas */
+    .fila-tarjetas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+ 
+    /* Tarjeta individual */
+    .tarjeta {
+      text-align: center;
+      border: 1px solid var(--color-borde);
+      border-top: 3px solid var(--color-azul-medio);
+      border-radius: 3px;
+      padding: 32px 24px 28px;
+      transition: transform .3s, box-shadow .3s;
+    }
+ 
+    .tarjeta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(13,27,42,.1);
+    }
+ 
+    /* Imagen redonda de la tarjeta */
+    .tarjeta-imagen-circular {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      overflow: hidden;
+      border: 3px solid var(--color-azul-claro);
+      background: var(--color-azul-palido);
+    }
+ 
+    .tarjeta-imagen-circular img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+ 
+    .tarjeta h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-azul-oscuro);
+      margin-bottom: 12px;
+    }
+ 
+    .tarjeta p {
+      font-size: .91rem;
+      color: var(--color-texto-suave);
+      line-height: 1.72;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+ 
+    /* Botón de cada tarjeta */
+    .boton-tarjeta {
+      display: inline-block;
+      padding: 8px 22px;
+      border: 1px solid var(--color-azul-medio);
+      color: var(--color-azul-medio);
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background .2s, color .2s;
+    }
+ 
+    .boton-tarjeta:hover { background: var(--color-azul-medio); color: #fff; }
+
+
+     
+    /*  BIBLIOGRAFÍA*/
+    .seccion-bibliografia {
+      background: var(--color-azul-palido);
+      padding: 36px 64px;
+      border-top: 2px solid var(--color-borde);
+    }
+ 
+    /* Título de la bibliografía */
+    .bibliografia-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-azul-oscuro);
+      margin-bottom: 16px;
+    }
+ 
+    /* Lista de referencias */
+    .bibliografia-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+ 
+    .bibliografia-lista li {
+      font-size: .92rem;
+      color: var(--color-texto-suave);
+      line-height: 1.6;
+      padding-left: 18px;
+      border-left: 3px solid var(--color-azul-claro);
+    }
+ 
+    .bibliografia-lista li em { color: var(--color-azul-oscuro); }
+ 
+
+ 
+    /*PIE DE PÁGINA */
+    .pie-de-pagina {
+      background: var(--color-azul-oscuro);
+      border-top: 3px solid var(--color-azul-claro);
+      padding: 22px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+ 
+    .pie-de-pagina p { color: #3a5a7a; font-size: .84rem; }
+ 
+    /* Enlaces del pie de página */
+    .pie-de-pagina nav a {
+      color: #3a5a7a;
+      text-decoration: none;
+      font-size: .82rem;
+      margin-left: 20px;
+      transition: color .2s;
+    }
+ 
+    .pie-de-pagina nav a:hover { color: var(--color-azul-claro); }
+ 
+ 
+    /* RESPONSIVE (pantallas pequeñas)*/
+    @media (max-width: 760px) {
+      .galeria-cuadricula, .fila-tarjetas { grid-template-columns: 1fr; }
+      .portada-contenido                  { padding: 0 24px; }
+      .seccion-introduccion               { padding: 36px 24px; }
+      .seccion-galeria                    { padding: 40px 20px; }
+    }
